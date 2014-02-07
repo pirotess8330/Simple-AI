@@ -1,0 +1,16 @@
+all : RunProgram
+
+RunProgram : RunProgram.o WumpusAgent.o Environment.o Directions.h
+	gcc -Wall -ansi -pedantic -g -o RunProgram RunProgram.o WumpusAgent.o Environment.o
+
+RunProgram.o : RunProgram.c WumpusAgent.h Environment.h Directions.h 
+	gcc -Wall -ansi -pedantic -g -c RunProgram.c
+	
+WumpusAgent.o : WumpusAgent.c Environment.h Directions.h
+	gcc -Wall -ansi -pedantic -g -c WumpusAgent.c
+
+Environment.o : Enviroment.c Environment.h
+	gcc -Wall -ansi -pedantic -g -c Environment.c
+
+clean :
+	rm *.o smake core*
